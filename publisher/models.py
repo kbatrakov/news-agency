@@ -19,7 +19,7 @@ class Newspaper(models.Model):
     published_date = models.DateField(null=False, blank=False)
     topic = models.ForeignKey(Topic, related_name="newspapers", on_delete=models.CASCADE)
     publishers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="newspapers",
-                                        null=False, blank=False)
+                                        blank=False)
 
     class Meta:
         ordering = ("title", )
@@ -31,8 +31,7 @@ class Newspaper(models.Model):
 
 
 class Editor(AbstractUser):
-    years_of_experience = models.FloatField(null=False)
-
+    years_of_experience = models.FloatField(default=0)
     class Meta:
         ordering = ("username", )
 
