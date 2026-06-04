@@ -25,7 +25,6 @@ class NewspaperAdmin(admin.ModelAdmin):
         "content",
         "published_date",
         "topic",
-        "publishers",
     ]
 
     list_filter = [
