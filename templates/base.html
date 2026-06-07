@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block title %}
+        <title>Publisher</title>
+    {% endblock %}
+</head>
+<body>
+
+    {% block topbar %}
+        {% include "includes/topbar.html" %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
