@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  Newspaper detail
+  <ul>
+    <li>Topic: {{newspaper.topic}}</li>
+    <li>Title: {{ newspaper.title }}</li>
+    <li>Published date: {{ newspaper.published_date }}</li>
+  </ul>
+  <h2>About</h2>
+  <div>{{ newspaper.content }}</div>
+  <h3>Authors</h3>
+    <ul>
+    {% for editor in newspaper.publishers.all %}
+      <li>{{ editor.first_name }} {{ editor.last_name }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
