@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  Editor's detail
+  {% for newspaper in editor.newspapers.all %}
+    <ul>
+      <li>{newspaper.title}</li>
+      <li>{newspaper.published_date}</li>
+      <li>{newspaper.topic}</li>
+    </ul>
+  {% endfor %}
+{% endblock %}
