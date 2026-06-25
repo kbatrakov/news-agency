@@ -1,9 +1,12 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from publisher.models import Editor, Topic, Newspaper
 from django.views import generic
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     num_editors = Editor.objects.count()
     num_topics = Topic.objects.count()
@@ -18,27 +21,27 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, template_name="publisher/index.html", context=context)
 
 
-class EditorListView(generic.ListView):
+class EditorListView(LoginRequiredMixin, generic.ListView):
     model = Editor
     paginate_by = 7
 
 
-class EditorDetailView(generic.DetailView):
+class EditorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Editor
     queryset = Editor.objects.prefetch_related("newspapers__topic")
 
 
-class NewspaperListView(generic.ListView):
+class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     queryset = Newspaper.objects.select_related("topic")
     paginate_by = 7
 
 
-class NewspaperDetailView(generic.DetailView):
+class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
 
 
-class TopicListView(generic.ListView):
+class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     queryset = Topic.objects.all()
     paginate_by = 7
