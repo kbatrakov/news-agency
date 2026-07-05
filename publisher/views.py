@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from publisher.models import Editor, Topic, Newspaper
 from django.views import generic
 
@@ -45,3 +46,30 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     queryset = Topic.objects.all()
     paginate_by = 7
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("publisher:newspaper-list")
+    template_name = "publisher/newspaper_form.html"
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("publisher:newspaper-list")
+    template_name = "publisher/newspaper_form.html"
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("publisher:newspaper-list")
+    template_name = "publisher/newspaper_confirm_delete.html"
+
+
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("publisher:topic-list")
+    template_name = ""
