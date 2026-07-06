@@ -1,7 +1,8 @@
 from django.urls import path
 from publisher.views import (
     index, EditorListView, EditorDetailView, NewspaperListView,
-    NewspaperDetailView, TopicListView, NewspaperCreateView, NewspaperUpdateView, NewspaperDeleteView,
+    NewspaperDetailView, TopicListView, NewspaperCreateView, NewspaperUpdateView, NewspaperDeleteView, TopicCreateView,
+    TopicUpdateView, TopicDeleteView,
 )
 
 
@@ -18,9 +19,11 @@ urlpatterns = [
     path("topics/", TopicListView.as_view(),
          name="topic-list"),
     path("newspapers/create/", NewspaperCreateView.as_view(), name="newspaper-create"),
-    path("newspapers/<int:pk>/update", NewspaperUpdateView.as_view(), name="newspaper-update"),
-    path("newspapers/<int:pk>/delete", NewspaperDeleteView.as_view(), name="newspaper-delete"),
-    path("topics/create")
+    path("newspapers/<int:pk>/update/", NewspaperUpdateView.as_view(), name="newspaper-update"),
+    path("newspapers/<int:pk>/delete/", NewspaperDeleteView.as_view(), name="newspaper-delete"),
+    path("topics/create/", TopicCreateView.as_view(), name="topic-create"),
+    path("topics/<int:pk>/update/", TopicUpdateView.as_view(), name="topic-update"),
+    path("topics/<int:pk>/delete/", TopicDeleteView.as_view(), name="topic-delete"),
 
 ]
 
