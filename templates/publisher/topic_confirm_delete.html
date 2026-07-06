@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Delete topic</h1>
+  <p>Are You sure You want to delete this topic: {{ topic }}?</p>
+  <p><i>All newspapers connected to selected topic will also be deleted</i></p>
+  <form action="" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete" class="btn btn-outline-danger">
+      <input type="button" value="Cancel" class="btn btn-outline-secondary" onclick="history.back()">
+  </form>
+{% endblock %}
