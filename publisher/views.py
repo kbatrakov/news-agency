@@ -72,4 +72,17 @@ class TopicCreateView(LoginRequiredMixin, generic.CreateView):
     model = Topic
     fields = "__all__"
     success_url = reverse_lazy("publisher:topic-list")
-    template_name = ""
+    template_name = "publisher/topic_form.html"
+
+
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("publisher:topic-list")
+    template_name = "publisher/topic_form.html"
+
+
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("publisher:topic-list")
+    template_name = "publisher/topic_confirm_delete.html"
