@@ -2,7 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+
+from publisher.forms import EditorCreationForm, EditorYearsOfExperienceUpdateForm
 from publisher.models import Editor, Topic, Newspaper
 from django.views import generic
 
@@ -86,3 +88,25 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Topic
     success_url = reverse_lazy("publisher:topic-list")
     template_name = "publisher/topic_confirm_delete.html"
+
+
+class EditorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Editor
+    form_class = EditorCreationForm
+
+
+class EditorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Editor
+    success_url = reverse_lazy("publisher:editor-list")
+
+
+class EditorYearsOfExperienceView(LoginRequiredMixin, generic.UpdateView):
+    model = Editor
+    form_class = EditorYearsOfExperienceUpdateForm
+    template_name = "publisher/years_of_experience_form.html"
+
+    def get_success_url(self):
+        return reverse(
+            "publisher:editor-detail",
+            kwargs={"pk": self.object.pk}
+        )
