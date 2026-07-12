@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <div class="card shadow-sm border-0">
+<div class="card shadow-sm border-0">
 
     <div class="card-header bg-white fw-bold">
         Newspapers
@@ -21,16 +21,22 @@
                 </tr>
             </thead>
 
-            {% for newspaper in newspaper_list %}
             <tbody>
+            {% for newspaper in newspaper_list %}
                 <tr>
                     <td>{{ newspaper.title }}</td>
                     <td>{{ newspaper.published_date }}</td>
                     <td>{{ newspaper.topic }}</td>
-                    <td>{{ newspaper.publishers }}</td>
+                    <td>
+                      {% for publisher in newspaper.publishers.all %}
+                        {{ publisher.first_name }} {{ publisher.last_name }}{% if not forloop.last %}, {% endif %}
+                      {% empty %}
+                        No publishers
+                      {% endfor %}
+                    </td>
                 </tr>
+            {% endfor %}
             </tbody>
-          {% endfor %}
 
         </table>
 
