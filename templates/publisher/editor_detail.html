@@ -1,11 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-  Editor's detail
-  {% for newspaper in editor.newspapers.all %}
-    <ul>
-      <li>{newspaper.title}</li>
-      <li>{newspaper.published_date}</li>
-      <li>{newspaper.topic}</li>
-    </ul>
-  {% endfor %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Username: {{ editor.username }}</h1>
+    <div class="d-flex flex-column">
+      <a href="{% url 'publisher:editor-update' pk=editor.id %}" class="btn btn-outline-primary">Update years of experience</a>
+      <br>
+      <a href="{% url 'publisher:editor-delete' pk=editor.id %}" class="btn btn-outline-danger">Delete editor</a>
+    </div>
+  </div>
+  <p><strong>First name:</strong> {{ editor.first_name }}</p>
+  <p><strong>Last name:</strong> {{ editor.last_name }}</p>
+  <p><strong>Years of experience:</strong> {{ editor.years_of_experience }}</p>
+  <p><strong>Is staff:</strong> {{ editor.is_staff }}</p>
+
+  <div class="ml-3">
+    <h4>Newspapers</h4>
+
+    {% for newspaper in editor.newspapers.all %}
+        <hr>
+        <p><strong>Title:</strong> {{ newspaper.title }}</p>
+        <p><strong>Topic:</strong> {{ newspaper.topic }}</p>
+        <p><strong>Published date:</strong> {{ newspaper.published_date }}</p>
+        <p class="text-muted"><strong>Id:</strong> {{newspaper.id}}</p>
+
+    {% empty %}
+      <p>No newspapers!</p>
+    {% endfor %}
+  </div>
 {% endblock %}
