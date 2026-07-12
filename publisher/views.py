@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 
-from publisher.forms import EditorCreationForm, EditorYearsOfExperienceUpdateForm
+from publisher.forms import EditorCreationForm, EditorYearsOfExperienceUpdateForm, NewspaperForm
 from publisher.models import Editor, Topic, Newspaper
 from django.views import generic
 
@@ -52,14 +52,14 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
     model = Newspaper
-    fields = "__all__"
+    form_class = NewspaperForm
     success_url = reverse_lazy("publisher:newspaper-list")
     template_name = "publisher/newspaper_form.html"
 
 
 class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
-    fields = "__all__"
+    form_class = NewspaperForm
     success_url = reverse_lazy("publisher:newspaper-list")
     template_name = "publisher/newspaper_form.html"
 
