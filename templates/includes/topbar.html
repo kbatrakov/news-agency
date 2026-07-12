@@ -17,19 +17,19 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Home page</a>
+                    <a class="nav-link text-dark" href="{% url "publisher:index" %}">Home page</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Editors</a>
+                    <a class="nav-link text-dark" href="{% url "publisher:editor-list" %}">Editors</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Topics</a>
+                    <a class="nav-link text-dark" href="{% url "publisher:topic-list" %}">Topics</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Newspapers</a>
+                    <a class="nav-link text-dark" href="{% url "publisher:newspaper-list" %}">Newspapers</a>
                 </li>
 
             </ul>
