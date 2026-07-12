@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-
 from publisher.forms import EditorCreationForm, EditorYearsOfExperienceUpdateForm, NewspaperForm
 from publisher.models import Editor, Topic, Newspaper
 from django.views import generic
