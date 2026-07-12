@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class Topic(models.Model):
@@ -31,9 +32,12 @@ class Newspaper(models.Model):
 
 
 class Editor(AbstractUser):
-    years_of_experience = models.FloatField(default=0)
+    years_of_experience = models.PositiveIntegerField(default=0)
     class Meta:
         ordering = ("username", )
 
     def __str__(self):
         return f"Editor: {self.first_name} {self.last_name} ({self.username})"
+
+    def get_absolute_url(self):
+        return reverse("publisher:editor-detail", kwargs={"pk": self.pk})
