@@ -4,9 +4,14 @@
 
   <div class="card shadow-sm border-0">
 
-    <div class="card-header bg-white fw-bold">
-        Editors
-    </div>
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+    <span class="fw-bold">Editors</span>
+
+    <a href="{% url 'publisher:editor-create' %}"
+       class="btn btn-outline-primary btn-sm">
+        + Create new editor
+    </a>
+</div>
 
     <div class="card-body p-0">
 
@@ -14,27 +19,27 @@
 
             <thead class="table-light">
                 <tr>
+                    <th>Id</th>
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Email</th>
                     <th>Username</th>
                     <th>Years of experience</th>
-
                 </tr>
             </thead>
-
-            {% for editor in editor_list %}
             <tbody>
+              {% for editor in editor_list %}
                 <tr>
+                    <td><a href="{% url "publisher:editor-detail" pk=editor.id %}">{{ editor.id }}</a></td>
                     <td>{{ editor.first_name }}</td>
                     <td>{{ editor.last_name }}</td>
                     <td>{{ editor.email }}</td>
-                    <td>{{ editor.username }}</td>
+                    <td><a href="{{ editor.get_absolute_url }}">{{ editor.username }} {% if user == editor %} (Me){% endif %}</a></td>
                     <td>{{ editor.years_of_experience }}</td>
                 </tr>
-            </tbody>
-          {% endfor %}
 
+              {% endfor %}
+            </tbody>
         </table>
 
     </div>
