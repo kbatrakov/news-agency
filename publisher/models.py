@@ -18,8 +18,10 @@ class Newspaper(models.Model):
     title = models.CharField(max_length=160, null=False, blank=False)
     content = models.TextField(max_length=2500, null=False, blank=False)
     published_date = models.DateField(null=False, blank=False)
-    topic = models.ForeignKey(Topic, related_name="newspapers", on_delete=models.CASCADE)
-    publishers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="newspapers",
+    topic = models.ForeignKey(Topic, related_name="newspapers",
+                              on_delete=models.CASCADE)
+    publishers = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                        related_name="newspapers",
                                         blank=False)
 
     class Meta:
@@ -33,6 +35,7 @@ class Newspaper(models.Model):
 
 class Editor(AbstractUser):
     years_of_experience = models.PositiveIntegerField(default=0)
+
     class Meta:
         ordering = ("username", )
 
