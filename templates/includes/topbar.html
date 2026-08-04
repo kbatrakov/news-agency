@@ -8,33 +8,52 @@
             Publisher
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="topbarNav">
+        <div class="ms-auto d-flex gap-2 align-items-center">
 
-            <ul class="navbar-nav ms-auto">
+            <a href="{% url 'publisher:index' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Home page
+            </a>
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{% url "publisher:index" %}">Home page</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{% url "publisher:editor-list" %}">Editors</a>
-                </li>
+            <a href="{% url 'publisher:editor-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Editors
+            </a>
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{% url "publisher:topic-list" %}">Topics</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{% url "publisher:newspaper-list" %}">Newspapers</a>
-                </li>
+            <a href="{% url 'publisher:topic-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Topics
+            </a>
 
-            </ul>
+
+            <a href="{% url 'publisher:newspaper-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Newspapers
+            </a>
+
+
+            {% if user.is_authenticated %}
+
+                <form action="{% url 'logout' %}" method="post" class="mb-0">
+
+                    {% csrf_token %}
+
+                    <button type="submit"
+                            class="btn btn-outline-danger rounded-pill">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </button>
+
+                </form>
+
+            {% endif %}
+
 
         </div>
 
     </div>
+
 </nav>
