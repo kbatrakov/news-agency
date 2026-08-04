@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Delete newspaper</h1>
+  <p>Are You sure You want to delete selected newspaper: {{ newspaper }}?</p>
+  <p><i>All topics connected to this newspaper will also be deleted</i></p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <input type="button" value="Cancel" class="btn btn-secondary" onclick="history.back()">
+  </form>
+{% endblock %}

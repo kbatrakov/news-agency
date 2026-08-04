@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+
+    <div class="col-md-5">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-header text-center"
+                 style="background-color: #e9e4f5;">
+
+                <h3 class="mb-0 fw-bold">
+                    🖋️ Welcome back
+                </h3>
+
+            </div>
+
+
+            <div class="card-body p-4">
+
+
+                {% if form.errors %}
+
+                    <div class="alert alert-danger">
+                        Invalid username or password.
+                        Please try again.
+                    </div>
+
+                {% endif %}
+
+
+                {% if next %}
+
+                    <div class="alert alert-info">
+                        Please login to access this page.
+                    </div>
+
+                {% endif %}
+
+
+                <form method="post" action="{% url 'login' %}">
+
+                    {% csrf_token %}
+
+                    {{ form|crispy }}
+
+
+                    <button type="submit"
+                            class="btn btn-primary w-100 rounded-pill mt-3">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Login
+
+                    </button>
+
+
+                    <input type="hidden"
+                           name="next"
+                           value="{{ next }}">
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

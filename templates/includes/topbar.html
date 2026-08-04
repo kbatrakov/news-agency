@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light w-100"
+     style="background-color: #e9e4f5;">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-dark" href="#">
+            <span style="font-size: 1.3rem;">🖋️</span>
+            Publisher
+        </a>
+
+
+        <div class="ms-auto d-flex gap-2 align-items-center">
+
+            <a href="{% url 'publisher:index' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Home page
+            </a>
+
+
+            <a href="{% url 'publisher:editor-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Editors
+            </a>
+
+
+            <a href="{% url 'publisher:topic-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Topics
+            </a>
+
+
+            <a href="{% url 'publisher:newspaper-list' %}"
+               class="btn btn-outline-primary rounded-pill">
+                Newspapers
+            </a>
+
+
+            {% if user.is_authenticated %}
+
+                <form action="{% url 'logout' %}" method="post" class="mb-0">
+
+                    {% csrf_token %}
+
+                    <button type="submit"
+                            class="btn btn-outline-danger rounded-pill">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+</nav>

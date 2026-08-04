@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card shadow-sm border-0">
+
+    <div class="card-header bg-white">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h5 class="mb-0 fw-bold">
+                Editors
+            </h5>
+
+
+            <div class="d-flex align-items-end gap-2">
+
+                <form method="get" class="d-flex align-items-end gap-2 mb-0">
+
+                    {{ search_form.username|as_crispy_field }}
+
+                    <button type="submit"
+                            class="btn btn-outline-secondary mb-3">
+                        Search
+                    </button>
+
+                </form>
+
+
+                <a href="{% url 'publisher:editor-create' %}"
+                   class="btn btn-outline-primary mb-3">
+
+                    + Create new editor
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-body p-0">
+
+        <table class="table table-hover align-middle mb-0">
+
+
+            <thead class="table-light">
+
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Years of experience</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            {% for editor in editor_list %}
+
+                <tr>
+
+                    <td>
+                        {{ editor.first_name }}
+                    </td>
+
+
+                    <td>
+                        {{ editor.last_name }}
+                    </td>
+
+
+                    <td>
+                        {{ editor.email }}
+                    </td>
+
+
+                    <td>
+
+                        <a href="{{ editor.get_absolute_url }}">
+                            {{ editor.username }}
+
+                            {% if user == editor %}
+                                (Me)
+                            {% endif %}
+
+                        </a>
+
+                    </td>
+
+
+                    <td>
+                        {{ editor.years_of_experience }}
+                    </td>
+
+                </tr>
+
+
+            {% empty %}
+
+                <tr>
+                    <td colspan="5" class="text-center py-3">
+                        No editors found.
+                    </td>
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+        {% include "includes/pagination.html" %}
+
+    </div>
+
+</div>
+
+{% endblock %}

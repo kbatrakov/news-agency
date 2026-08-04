@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card shadow-sm border-0">
+
+    <div class="card-header bg-white">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h5 class="mb-0 fw-bold">
+                Topics
+            </h5>
+
+
+            <div class="d-flex align-items-end gap-2">
+
+
+                <form method="get" class="d-flex align-items-end gap-2 mb-0">
+
+                    {{ search_form.name|as_crispy_field }}
+
+
+                    <button type="submit"
+                            class="btn btn-outline-secondary mb-3">
+                        Search
+                    </button>
+
+                </form>
+
+
+                <a href="{% url 'publisher:topic-create' %}"
+                   class="btn btn-success rounded-pill shadow-sm mb-3">
+
+                    <i class="bi bi-plus-circle"></i>
+                    Add topic
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-body p-0">
+
+
+        <table class="table table-hover align-middle mb-0">
+
+
+            <thead class="table-light">
+
+                <tr>
+                    <th>#</th>
+                    <th>Topic name</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+            {% for topic in topic_list %}
+
+                <tr>
+
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+
+
+                    <td>
+                        {{ topic.name }}
+                    </td>
+
+
+                    <td>
+
+                        <a href="{% url 'publisher:topic-update' topic.pk %}"
+                           class="btn btn-sm btn-primary">
+                            Update
+                        </a>
+
+
+                        <a href="{% url 'publisher:topic-delete' topic.pk %}"
+                           class="btn btn-sm btn-danger">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+            {% empty %}
+
+                <tr>
+                    <td colspan="3" class="text-center py-3">
+                        No topics available.
+                    </td>
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+      {% include "includes/pagination.html" %}
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
