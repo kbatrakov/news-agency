@@ -1,8 +1,10 @@
 from django.urls import path
 from publisher.views import (
     index, EditorListView, EditorDetailView, NewspaperListView,
-    NewspaperDetailView, TopicListView, NewspaperCreateView, NewspaperUpdateView, NewspaperDeleteView, TopicCreateView,
-    TopicUpdateView, TopicDeleteView, EditorCreateView, EditorDeleteView, EditorYearsOfExperienceView,
+    NewspaperDetailView, TopicListView, NewspaperCreateView, NewspaperUpdateView,
+    NewspaperDeleteView, TopicCreateView, TopicUpdateView, TopicDeleteView,
+    EditorCreateView, EditorDeleteView, EditorYearsOfExperienceView,
+    self_assign_to_newspaper,
 )
 
 
@@ -37,6 +39,8 @@ urlpatterns = [
          name="editor-delete"),
     path("editors/<int:pk>/update/", EditorYearsOfExperienceView.as_view(),
          name="editor-update"),
+    path("newspapers/<int:pk>/assign/", self_assign_to_newspaper,
+         name="newspaper-assign"),
 ]
 
 app_name = "publisher"
