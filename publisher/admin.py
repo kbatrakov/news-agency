@@ -5,7 +5,7 @@ from publisher.models import Topic, Newspaper, Editor
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    list_display =[
+    list_display = [
         "name",
     ]
 
@@ -40,7 +40,7 @@ class NewspaperAdmin(admin.ModelAdmin):
 
 @admin.register(Editor)
 class EditorAdmin(UserAdmin):
-    list_display =UserAdmin.list_display +("years_of_experience", )
+    list_display = UserAdmin.list_display + ("years_of_experience", )
     fieldsets = UserAdmin.fieldsets + (
         ("Additional info", {"fields": ("years_of_experience",)}),
     )
