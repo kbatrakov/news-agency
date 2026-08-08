@@ -1,29 +1,26 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
+from django.views.generic import TemplateView
 from publisher.forms import (EditorCreationForm, EditorYearsOfExperienceUpdateForm,
                              NewspaperForm, EditorUsernameSearchForm,
                              TopicNameSearchForm,
                              NewspaperTitleSearchForm)
 from publisher.models import Editor, Topic, Newspaper
-from django.views import generic
+from django.views import generic, View
 
 
-@login_required
-def index(request: HttpRequest) -> HttpResponse:
-    num_editors = Editor.objects.count()
-    num_topics = Topic.objects.count()
-    num_newspapers = Newspaper.objects.count()
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "publisher/index.html"
 
-    context = {
-        "num_editors": num_editors,
-        "num_topics": num_topics,
-        "num_newspapers": num_newspapers
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    return render(request, template_name="publisher/index.html", context=context)
+        context["num_editors"] = Editor.objects.count()
+        context["num_topics"] = Topic.objects.count()
+        context["num_newspapers"] = Newspaper.objects.count()
+
+        return context
 
 
 class EditorListView(LoginRequiredMixin, generic.ListView):
@@ -181,10 +178,11 @@ class EditorYearsOfExperienceView(LoginRequiredMixin, generic.UpdateView):
         )
 
 
-def self_assign_to_newspaper(request, pk):
-    newspaper = get_object_or_404(Newspaper, pk=pk)
+class SelfAssignToNewspaperView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        newspaper = get_object_or_404(Newspaper, pk=pk)
 
-    if request.user not in newspaper.publishers.all():
-        newspaper.publishers.add(request.user)
+        if request.user not in newspaper.publishers.all():
+            newspaper.publishers.add(request.user)
 
-    return redirect("publisher:newspaper-list")
+        return redirect("publisher:newspaper-list")
