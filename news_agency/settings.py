@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-23d1+rtyk%enb7(%de9)f$j*tr^zqe^dbv1j$5m_g&(k_&gle3'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
+                            'django-insecure-23d1+rtyk%enb7(%de9)f$j*'
+                            'tr^zqe^dbv1j$5m_g&(k_&gle3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -133,6 +135,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "publisher:index"
+LOGIN_REDIRECT_URL = "/"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
