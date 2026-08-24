@@ -7,7 +7,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',
     'localhost',
-    'news-agency-r4q7.onrender.com'],
+    'news-agency-r4q7.onrender.com',
+                 ]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
