@@ -1,5 +1,4 @@
 import os
-
 from news_agency.settings.base import *
 
 
