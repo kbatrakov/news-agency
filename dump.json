@@ -1,0 +1,314 @@
+[
+{
+    "model": "publisher.topic",
+    "pk": 1,
+    "fields": {
+        "name": "Nature & Science"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 2,
+    "fields": {
+        "name": "Politics"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 3,
+    "fields": {
+        "name": "Sports"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 4,
+    "fields": {
+        "name": "Gastronomy"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 5,
+    "fields": {
+        "name": "Cryptocurrency"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 6,
+    "fields": {
+        "name": "Psychology"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 7,
+    "fields": {
+        "name": "Logistics"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 8,
+    "fields": {
+        "name": "Geographics"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 9,
+    "fields": {
+        "name": "Technology"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 10,
+    "fields": {
+        "name": "Health"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 11,
+    "fields": {
+        "name": "Business & Economics"
+    }
+},
+{
+    "model": "publisher.topic",
+    "pk": 12,
+    "fields": {
+        "name": "Culture & Style"
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 1,
+    "fields": {
+        "title": "SPORTLINE DAILY",
+        "content": "Headline:\r\n\"A New Era of Champions: Young Stars Changing the World of Sports\"\r\n\r\nThe latest news from the world of sports: unexpected victories, major transfers, and record-breaking performances. Young athletes are challenging legends, while teams prepare for the most important battles of the season. SPORTLINE DAILY brings you the stories of those who are shaping the future of sports.",
+        "published_date": "2026-07-11",
+        "topic": 3,
+        "publishers": [
+            2,
+            4,
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 2,
+    "fields": {
+        "title": "Nature's Voice",
+        "content": "Nature's Voice is a newspaper dedicated to the beauty and preservation of the natural world. It features stories about wildlife, forests, oceans, climate, and environmental conservation. Our mission is to inspire readers to appreciate and protect the planet for future generations.",
+        "published_date": "2026-07-21",
+        "topic": 1,
+        "publishers": [
+            2,
+            1,
+            5,
+            3
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 3,
+    "fields": {
+        "title": "Technology Horizon",
+        "content": "Technology Horizon explores the newest trends in technology and innovation. The newspaper covers artificial intelligence, software development, robotics, and digital transformation. Readers can discover how modern technologies are changing everyday life and shaping the future.",
+        "published_date": "2026-07-26",
+        "topic": 9,
+        "publishers": [
+            1
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 4,
+    "fields": {
+        "title": "Healthy Living Today",
+        "content": "Healthy Living Today focuses on wellness, nutrition, and active lifestyles. Our articles provide useful information about fitness, healthy habits, mental balance, and ways to improve everyday quality of life.",
+        "published_date": "2026-07-26",
+        "topic": 10,
+        "publishers": [
+            4
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 5,
+    "fields": {
+        "title": "Business World Report",
+        "content": "Business World Report provides insights into global markets, entrepreneurship, and economic development. We analyze important business trends and share stories about successful companies, startups, and industry leaders.",
+        "published_date": "2026-07-26",
+        "topic": 11,
+        "publishers": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 6,
+    "fields": {
+        "title": "Science Discovery",
+        "content": "Science Discovery presents fascinating stories from the world of science. The newspaper covers space exploration, medicine, environmental research, and important scientific achievements that help humanity move forward.",
+        "published_date": "2026-07-26",
+        "topic": 1,
+        "publishers": [
+            1,
+            5,
+            3
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 7,
+    "fields": {
+        "title": "Modern Culture Magazine",
+        "content": "Modern Culture Magazine explores art, music, cinema, and entertainment. We introduce talented creators, review new releases, and discuss cultural events that influence society around the globe.",
+        "published_date": "2026-07-26",
+        "topic": 12,
+        "publishers": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "publisher.newspaper",
+    "pk": 8,
+    "fields": {
+        "title": "Environmental Voice",
+        "content": "Environmental Voice is dedicated to protecting our planet. The newspaper discusses climate change, renewable energy, wildlife protection, and sustainable solutions for future generations.",
+        "published_date": "2026-07-26",
+        "topic": 1,
+        "publishers": [
+            6
+        ]
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$9vWlc56NmFJZpgkCcxqKfL$yNQx+D3cQHo2fPyTcvmS/c15QhVOHp1ev3DzZ39Fzko=",
+        "last_login": "2026-08-08T01:22:57.818Z",
+        "is_superuser": true,
+        "username": "KyryloB",
+        "first_name": "Kyrylo",
+        "last_name": "Batrakov",
+        "email": "kb@kb.kb",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-04T22:27:50Z",
+        "years_of_experience": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$SZeTtlPd1JTvGIq9jqUcge$iy148rJeGfPcqD0dmOepxIoCGyXevYdv/S7r3Oq1Lmc=",
+        "last_login": "2026-06-22T16:59:05.005Z",
+        "is_superuser": true,
+        "username": "Eddie777",
+        "first_name": "",
+        "last_name": "",
+        "email": "ed@aval777.ed",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-22T16:57:13.083Z",
+        "years_of_experience": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Ou3WOWRMqgQNGxDjbOZgQQ$G8eCXE1jKBhgpaHD0sPv7lSlfrrDNpVsdW/A0DIszHg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "SlabikYura",
+        "first_name": "Yurii",
+        "last_name": "Slabko",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-11T06:41:02.313Z",
+        "years_of_experience": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$lOGQXIN62IYVAdxBOWFzMR$k2tXqNnU87K9JCcF6/3cuYyASg+j1oiudtFKOpYIjDs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "HlushaSasha",
+        "first_name": "Oleksandr",
+        "last_name": "Hluschenko",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-11T06:46:24.220Z",
+        "years_of_experience": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$CIEMYQwgFTcY3xq6skimay$Ytez7R3TyzGb8uvlrvA7mRw7ygRs2w6YiZXYYjTpN+c=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "LBJ23",
+        "first_name": "Lebron",
+        "last_name": "James",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-12T09:38:51.637Z",
+        "years_of_experience": 20,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "publisher.editor",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$nU9bWh3wBOAuGYtUEp03OP$IiV4hTH9T++mt+SSi2GyPnWdfk2rMesLg+9Fg3N6Goo=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "IhorYkush",
+        "first_name": "Ihor",
+        "last_name": "Yakushev",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-26T06:56:54.224Z",
+        "years_of_experience": 10,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
