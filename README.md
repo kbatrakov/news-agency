@@ -22,6 +22,10 @@ The project allows editors to create, edit and manage news articles, assign publ
 The project is deployed on Render and available for testing:
 https://news-agency-r4q7.onrender.com
 
+Superuser data for testing:
+login: user
+password: user12345
+
 ---
 
 ## 🛠 Technologies
