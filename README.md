@@ -17,6 +17,13 @@ The project allows editors to create, edit and manage news articles, assign publ
 
 ---
 
+## 🌐 Live Demo
+
+The project is deployed on Render and available for testing:
+https://news-agency-r4q7.onrender.com
+
+---
+
 ## 🛠 Technologies
 
 - Python 3.11
